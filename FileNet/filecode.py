@@ -1,4 +1,3 @@
-
 import http.server
 import socket
 import socketserver
@@ -12,8 +11,10 @@ PORT = 8010
 
 os.environ['USERPROFILE']
 
-desktop = os.path.join(os.path.join(os.environ['USERPROFILE']),'Documents/Test')
+desktop = os.path.join(os.path.join(os.environ['USERPROFILE']),'Desktop/Notes')
 os.chdir(desktop)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+index_path = os.path.join(current_dir, './pages/index2.html')
 
 Handler = http.server.SimpleHTTPRequestHandler
 hostname = socket.gethostname()
@@ -23,8 +24,9 @@ IP = "http://" + s.getsockname()[0] + ":" + str(PORT)
 link = IP
 
 url = pyqrcode.create(link)
-url.svg("C:/Users/falco/Documents/sriram_22011102105/file sharing/myqr.svg", scale=8)
-webbrowser.open(r'C:/Users/falco/Documents/sriram_22011102105/file sharing/index.html')
+qr_path=os.path.join(current_dir, './assets/myqr.svg')
+url.svg(qr_path, scale=8)
+webbrowser.open(index_path)
 
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
 	print("serving at port", PORT)
