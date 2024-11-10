@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+:root {
+  --primary-color: rgb(229, 89, 21);
+  --bg-color: #ffe8de;
+}
+
+/* Background Gradient Animation */
+@keyframes gradientFlow {
+    0% {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 199, 175, 0.8) 0%,
+            rgba(255, 232, 222, 0.7) 25%, 
+            rgba(229, 89, 21, 0.4) 50%,
+            rgba(255, 206, 184, 0.6) 75%,
+            rgba(255, 199, 175, 0.8) 100%
+        );
+        background-size: 400% 400%;
+        background-position: 0% 50%;
+    }
+    50% {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 199, 175, 0.8) 0%,
+            rgba(255, 232, 222, 0.7) 25%,
+            rgba(229, 89, 21, 0.4) 50%,
+            rgba(255, 206, 184, 0.6) 75%, 
+            rgba(255, 199, 175, 0.8) 100%
+        );
+        background-size: 400% 400%;
+        background-position: 100% 50%;
+    }
+    100% {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 199, 175, 0.8) 0%,
+            rgba(255, 232, 222, 0.7) 25%,
+            rgba(229, 89, 21, 0.4) 50%,
+            rgba(255, 206, 184, 0.6) 75%,
+            rgba(255, 199, 175, 0.8) 100%
+        );
+        background-size: 400% 400%;
+        background-position: 0% 50%;
+    }
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    animation: gradientFlow 15s ease infinite;
+    background-size: 400% 400%;
+}
+
+
+
+.container {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 24px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 0 32px rgba(255, 255, 255, 0.15);
+    animation: container-appear 0.6s ease-out;
+    text-align: center;
+}
+
+@keyframes container-appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    color: rgba(0, 0, 0, 0.8);
+    margin: 0 0 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+p {
+    color: rgba(0, 0, 0, 0.7);
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.qr-code {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 12px;
+    margin: 2rem auto;
+    width: fit-content;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.qr-code:hover {
+    transform: scale(1.02);
+}
+
+.qr-code img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+}
+
+
+.logout {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: rgba(229, 89, 21, 0.9);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.logout:hover {
+    background: rgba(229, 89, 21, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(229, 89, 21, 0.3);
+}
+
+.logout:active {
+    transform: translateY(0);
+}
+
+/* Scan line animation */
+@keyframes scanline {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+
+
+
+</style>
+</head>
+<body class="crt">
+    <div class="container">
+        <h1>Scan the QR code </h1>
+        <p> Just connect to internet, scan the QR code, and download files directly – simple as that.</p>
+        <div class="qr-code">
+            <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+        </div>
+        <a href="{{ url_for('logout') }}" class="logout">Terminate Session</a>
+        
+
+    </div>
+    
+</body>
+</html>
