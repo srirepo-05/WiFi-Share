@@ -1,6 +1,6 @@
-# FileFling: Cross-Device File Sharing System
+# FileNet: Cross-Device File Sharing System
 ## Project Overview
-FileFling is a web-based file-sharing system that enables users to securely share files across different devices on a local network. The system generates QR codes for easy mobile access and provides a user-friendly interface for file management.
+FileNet is a web-based file-sharing system that enables users to securely share files across different devices on a local network. The system generates QR codes for easy mobile access and provides a user-friendly interface for file management.
 
 ## Key Features
 1. **Secure Authentication**
