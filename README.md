@@ -2,6 +2,8 @@
 ## Project Overview
 FileNet is a web-based file-sharing system that enables users to securely share files across different devices on a local network. The system generates QR codes for easy mobile access and provides a user-friendly interface for file management.
 
+[Click here to view Demo Video](https://www.tinyurl.com/filenetdemo)
+
 ## Key Features
 1. **Secure Authentication**
    - Username/password-based login system
